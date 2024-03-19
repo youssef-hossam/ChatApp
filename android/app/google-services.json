@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "231813671344",
+    "project_id": "chat-app-c05ed",
+    "storage_bucket": "chat-app-c05ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231813671344:android:44e807ad8c93dd9bf6ce75",
+        "android_client_info": {
+          "package_name": "com.example.schoolar_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChCUVScScXl-p6dIqbbOjP3d53n0v6g-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
