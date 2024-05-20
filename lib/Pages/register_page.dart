@@ -1,18 +1,16 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:schoolar_chat/Pages/chat_page.dart';
-import 'package:schoolar_chat/cubits/register/register_cubit.dart';
+import 'package:schoolar_chat/blocs/auth/auth_bloc.dart';
 
 import '../consttants.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_textfield.dart';
-import '../helper/snakbar.dart';
 
 class RegisterPage extends StatelessWidget {
   static String id = "registerpage";
@@ -28,16 +26,8 @@ class RegisterPage extends StatelessWidget {
   bool isloading = false;
 
   @override
-  // void dispose() {
-  //   email.dispose();
-  //   pass.dispose();
-  //   // TODO: implement dispose
-  //   super.dispose();
-  // }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is RegisterLoading) {
           isloading = true;
@@ -126,23 +116,11 @@ class RegisterPage extends StatelessWidget {
                             text: "Register",
                             ontap: () async {
                               if (formstate.currentState!.validate()) {
-                                BlocProvider.of<RegisterCubit>(context)
-                                    .register(
+                                BlocProvider.of<AuthBloc>(context).add(
+                                    RegisterEvent(
                                         email: email.text.trim(),
-                                        pass: pass.text.trim());
+                                        password: pass.text.trim()));
                               }
-                              // or
-                              // AwesomeDialog(
-                              //   context: context,
-                              //   dialogType: DialogType.error,
-                              //   headerAnimationLoop: true,
-                              //   animType: AnimType.bottomSlide,
-                              //   title: 'The account already exists for that email.',
-                              //   reverseBtnOrder: true,
-                              //   btnOkOnPress: () {},
-                              //   btnCancelOnPress: () {},
-                              //   desc: 'Enter a diffrent email please,',
-                              // ).show();
                             },
                           )
                         ],

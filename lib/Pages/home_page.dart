@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:schoolar_chat/Pages/chat_page.dart';
 import 'package:schoolar_chat/Pages/register_page.dart';
+import 'package:schoolar_chat/blocs/auth/auth_bloc.dart';
 import 'package:schoolar_chat/consttants.dart';
-import 'package:schoolar_chat/cubits/login/login_cubit.dart';
 import 'package:schoolar_chat/widgets/custom_button.dart';
 import 'package:schoolar_chat/widgets/custom_textfield.dart';
 
@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is LoginLoading) {
           isloading = true;
@@ -121,8 +121,10 @@ class LoginPage extends StatelessWidget {
                             text: "Login",
                             ontap: () async {
                               if (formstate.currentState!.validate()) {
-                                BlocProvider.of<LoginCubit>(context)
-                                    .login(email: email.text, pass: pass.text);
+                                BlocProvider.of<AuthBloc>(context).add(
+                                    LoginEvent(
+                                        email: email.text.trim(),
+                                        password: pass.text.trim()));
                               }
                             },
                           )

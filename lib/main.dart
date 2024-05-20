@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:schoolar_chat/Pages/chat_page.dart';
 import 'package:schoolar_chat/Pages/register_page.dart';
+import 'package:schoolar_chat/blocs/auth/auth_bloc.dart';
+import 'package:schoolar_chat/cubits/auth/auth_cubit.dart';
 import 'package:schoolar_chat/cubits/chat/chat_cubit.dart';
-import 'package:schoolar_chat/cubits/login/login_cubit.dart';
-import 'package:schoolar_chat/cubits/register/register_cubit.dart';
 
 import 'Pages/home_page.dart';
 import 'firebase_options.dart';
@@ -36,10 +36,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => LoginCubit(),
-        ),
-        BlocProvider(
-          create: (context) => RegisterCubit(),
+          create: (context) => AuthBloc(),
         ),
         BlocProvider(
           create: (context) => ChatCubit(),
