@@ -1,21 +1,50 @@
-# schoolar_chat
+<h1 align="center">💬 Schoolar Chat</h1>
 
-A new Flutter project.
+<p align="center">
+  A real-time chat app built with <b>Flutter</b> and <b>Firebase</b> — sign up, log in and chat instantly.
+</p>
 
-## Getting Started
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter"/>
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase"/>
+  <img src="https://img.shields.io/badge/State-Cubit%20%2F%20BLoC-21B18F?style=flat-square" alt="Cubit"/>
+</p>
 
-This project is a starting point for a Flutter application.
+<p align="center">
+  <img src="screenshots/showcase.webp" alt="Schoolar Chat screenshots" width="100%"/>
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🔐 **Register & login** with Firebase Authentication (email + password), with clear error dialogs (e.g. account already exists).
+- ⚡ **Real-time messages** streamed from Cloud Firestore — new messages appear instantly.
+- 🫧 Separate chat bubbles for **my messages** and **friend messages**, auto-scroll to the latest one.
+- ⏳ Loading overlay while signing in, and form validation on every field.
 
-For help getting started with Flutter development, view the<img width="1080" height="2220" alt="Screenshot_1710863494" src="https://github.com/user-attachments/assets/f9029848-ac0a-4283-80ca-6644447c30e8" />
-<img width="1080" height="2220" alt="Screenshot_1710684786" src="https://github.com/user-attachments/assets/cf815b08-3d5c-4b1f-9382-becfad24ed48" />
-<img width="1080" height="2400" alt="Screenshot_1744201525" src="https://github.com/user-attachments/assets/a291575a-e03a-4b3f-b69a-bfec0ef66f9b" />
+## 🏗️ How it's built
 
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.<img width="1080" height="2220" alt="Screenshot_1710863494" src="https://github.com/user-attachments/assets/8152524e-6a49-46fc-ba33-bda728f598af" />
-<img width="1080" height="2220" alt="Screenshot_1710684786" src="https://github.com/user-attachments/assets/72327327-0d63-4863-b0cf-f249a409deba" />
+```
+lib/
+├── cubits/      # AuthCubit + ChatCubit — business logic & states
+├── blocs/       # AuthBloc (event-driven version of the same flow)
+├── models/      # MessageModel
+├── Pages/       # login / register / chat screens
+├── widgets/     # reusable text field, button, chat bubbles
+└── helper/      # snackbar helper
+```
 
+- **State management:** `flutter_bloc` — the UI only listens to states (`loading`, `success`, `failure`).
+- **Backend:** `firebase_auth` + `cloud_firestore`.
+
+## 🚀 Run it
+
+```bash
+flutter pub get
+flutter run
+```
+
+> Uses the project's existing Firebase config (`firebase_options.dart`). To use your own Firebase project, run `flutterfire configure`.
+
+---
+
+<p align="center">Made with ❤️ by <a href="https://github.com/youssef-hossam">Youssef Hadwa</a></p>
