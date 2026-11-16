@@ -11,8 +11,14 @@
 </p>
 
 <p align="center">
-  <img src="screenshots/showcase.webp" alt="Schoolar Chat screenshots" width="100%"/>
+  <img src="screenshots/hero.webp" alt="Schoolar Chat" width="100%"/>
 </p>
+
+## 📱 Screens
+
+| Login | Register error | Chat |
+|:-:|:-:|:-:|
+| <img src="screenshots/2.webp" width="200"/> | <img src="screenshots/3.webp" width="200"/> | <img src="screenshots/1.webp" width="200"/> |
 
 ## ✨ Features
 
